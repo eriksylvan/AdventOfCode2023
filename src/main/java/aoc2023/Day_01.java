@@ -31,6 +31,21 @@ public class Day_01 {
         return sum;
     }
 
+    // Copilot test
+    // a function that takes a list of integers and returns the higest number
+    public int highestNumber(ArrayList<Integer> numbersList) {
+
+        int highest = Integer.MIN_VALUE;
+        for (int f : numbersList) {
+            if (f > highest) {
+                highest = f;
+            }
+        }
+        return highest;
+    }
+
+
+
     public static void main(String[] args) {
         System.out.println("Advent of code 2023, Day 1\n");
         Day_01 day_01 = new Day_01();
