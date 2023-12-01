@@ -69,17 +69,6 @@ public class Day_01 {
             s = s.replaceAll("eight", "eight8eight");
             s = s.replaceAll("nine", "nine9nine");
 
- 
-            //System.out.println(s);
-
-
-
-
-
-
-
-
-
             //find first numeric character in s
             int i = 0;
             while (!Character.isDigit(s.charAt(i))) {
