@@ -17,3 +17,11 @@ test {
 		events "passed", "skipped", "failed"
 	}
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDirs 'src/main/resources', 'src/main/java/aoc2023/input'
+        }
+    }
+}
