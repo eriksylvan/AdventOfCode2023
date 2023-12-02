@@ -1,0 +1,65 @@
+public int day02PartOne(ArrayList<String> games) {
+        int sum = 0;
+        ArrayList<Integer> numbersList = new ArrayList<>();
+        
+        int pow = 0;
+        //loop through calibrationList 
+        for (String g : games) {
+           System.out.println(g);
+           //split string by ':' into array of strings
+            String[] game = g.trim().split(":");
+            for (String s : game) {
+                System.out.println(s);
+            }
+            //Trrim leading and trailing spaces
+
+            String[] rounds = game[1].trim().split(";");
+            boolean validRound = true;
+            for (String r:rounds){
+                System.out.println(r.trim());
+                String[] cubes = r.trim().split(",");
+                for (String c:cubes){
+                    System.out.println(c.trim());
+                    String[] noOfCubes = c.trim().split(" ");
+                    if ("red".equals(noOfCubes[1])){
+                        if (Integer.parseInt(noOfCubes[0]) <= 12) {
+                            System.err.println(" red fits in 12"); 
+                        }
+                        else {
+                            System.err.println(" red does not fit in 12"); 
+                             // game not valid
+                            validRound = false;
+                            break;
+                        }
+                    }
+                    if ("green".equals(noOfCubes[1])){
+                        if (Integer.parseInt(noOfCubes[0]) <= 13) {
+                            System.err.println(" green fits in 13"); 
+                        }
+                        else {
+                            System.err.println(" green does not fit in 13"); 
+                             // game not valid
+                            validRound = false;
+                            break;
+                        }
+                    }
+                    if ("blue".equals(noOfCubes[1])){
+                        if (Integer.parseInt(noOfCubes[0]) <= 14) {
+                            System.err.println(" blue fits in 14"); 
+                        }
+                        else {
+                            System.err.println(" blue does not fit in 14"); 
+                            // game not valid
+                            validRound = false;
+                            break;
+                        }
+                    }
+                }
+                if (!validRound) {
+                   
+                    break;
+                }
+            }
+        
+        return sum;
+    }
