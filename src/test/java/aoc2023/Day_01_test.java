@@ -12,23 +12,21 @@ public class Day_01_test {
 
     @Test
     public void testPartOne_1() {
-        Integer[] input = { 1, 2, 3 };
-        ArrayList<Integer> indata = new ArrayList<Integer>(Arrays.asList(input));
+        String[] input = { "1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet" };
+        ArrayList<String> indata = new ArrayList<String>(Arrays.asList(input));
 
-        int expected = 6;
-        //int actual = day1.day01PartOne(indata);
-        int actual = 6;
+        int expected = 142;
+        int actual = day1.day01PartOne(indata);
         assertEquals(actual, expected, "expected: " + expected + " actual: " + actual);
     }
 
     @Test
-    public void testPartOne_2() {
-        Integer[] input = { 10, 20, 30, 11, 23, -4 };
-        ArrayList<Integer> indata = new ArrayList<Integer>(Arrays.asList(input));
+    public void testPartTwo_2() {
+        String[] input = { "two1nine", "eightwothree", "abcone2threexyz", "xtwone3four", "4nineeightseven2", "zoneight234", "7pqrstsixteen" };
+        ArrayList<String> indata = new ArrayList<String>(Arrays.asList(input));
 
-        int expected = 90;
-        //int actual = day1.day01PartOne(indata);
-        int actual = 90;
+        int expected = 281;
+        int actual = day1.day01PartOne(indata);
         assertEquals(actual, expected, "expected: " + expected + " actual: " + actual);
     }
 }
