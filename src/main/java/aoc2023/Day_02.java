@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * Day_02
- * https://adventofcode.com/2023/day/1
+ * https://adventofcode.com/2023/day/2
  */
 public class Day_02 {
 
@@ -90,7 +90,7 @@ public class Day_02 {
         int sum = 0;
         //loop through calibrationList 
         for (String g : games) {
-           System.out.println(g);
+           //System.out.println(g);
            //split string by ':' into array of strings
             String[] game = g.trim().split(":");
             String[] round = game[1].trim().split(";");
@@ -143,7 +143,8 @@ public class Day_02 {
 }
 
 /*
-Advent of code 2023, Day 01
-Solution Part one: 55017
-Solution Part two: 53539
+Advent of code 2023, Day 02
+
+Solution Part one: 2317
+Solution Part two: 74804
 */
