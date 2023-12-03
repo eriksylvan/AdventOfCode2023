@@ -12,9 +12,9 @@ public class Day_03_test {
     Day_03 day03 = new Day_03();
 
     String[] testData = {      
-                        "467..114..",
+                        "467.......",
                         "...*......",
-                        "..35..633.",
+                        ".35...633.",
                         "......#..1",
                         "617*......",
                         ".....+.58.",
@@ -23,6 +23,7 @@ public class Day_03_test {
                         "...$.*....",
                         ".664.598.."};
 
+    
     @Test
     public void testPartOne_1() {
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));
@@ -38,8 +39,9 @@ public class Day_03_test {
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));
 
         int expected = 467835;
+//        expected = (1*1+1*1+755*598);
         int actual = day03.day03PartTwo(indata);
-        assertEquals(actual, expected, "expected: " + expected + " actual: " + actual);
+        assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
     }
 
 }

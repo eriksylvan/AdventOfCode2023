@@ -77,13 +77,7 @@ public class Day_03 {
                 }
             }
         } 
-        System.err.println(numbers);
-        System.err.println(symbols);
-
-        System.out.println(numbers.size());
-        System.out.println(symbols.size());
-        System.out.println(sum);
-
+       
         sum = 0;
         for (int i = 0; i < numbers.size(); i++) {
             if (!symbols.get(i).equals(".")){
@@ -177,11 +171,9 @@ public class Day_03 {
                 char c = row.charAt(j);
                 //check if character is a number
                 if (c == '*') {
-                    // Number found
-                    //System.out.println("found *");
                     // check if symbol is in any of the 8 neighbours
                     boolean numberFound = false;
-                    int neighbourcount =0;
+                    int neighbourcount = 0;
                     for (int k = i-1; k <= i+1; k++) {
                         numberFound = false;
                         if (k < 0 || k >= schema.size()) continue;
@@ -204,27 +196,17 @@ public class Day_03 {
                             }
                         }
                     }
-                    //System.out.println("neighbourcount: " + neighbourcount+ " i: " + i + " j: " + j);
+                    System.out.println("neighbourcount: " + neighbourcount+ " i: " + i + " j: " + j);
                     symbolArrayList.add(new int[]{i,j,neighbourcount});
                    
                 }
             }
         }
-         // loop through neighboursArrayList and print 
-        // System.out.println("neighborArrayList"); 
+        
+        //print all neighbours
         for (int[] n:neghboArrayList){
-            //System.out.println("row: " + n[0] + " col: " + n[1] + "*row: " + n[2] + " *col: " + n[3]);
-            //System.out.println(getNumber(schema, n[0], n[1]));
-            }    
-        // loop through symbolArrayList and print
-
-        //System.out.println("symbolArrayList");
-        for (int[] s:symbolArrayList){
-            //System.out.println("row: " + s[0] + " col: " + s[1] + " neighbourcount: " + s[2]);
-            }   
-
-
-        // loop through symbolArrayList and print
+            System.out.println("neighbour: " + n[0] + " " + n[1] + " " + n[2] + " " + n[3]);
+        }
 
         // define an ArrayList of integers
         ArrayList<Integer> findNumber = new ArrayList<>();   
@@ -234,20 +216,14 @@ public class Day_03 {
                 // fild all numbers that neighbor that position
                 for (int[] n:neghboArrayList){
                     if (n[2] == s[0] && n[3] == s[1]){
-                        p*=getNumber(schema, n[0], n[1]);
-                       // System.out.println("p: " + p);
+                        int num= getNumber(schema, n[0], n[1]);
+                        p*=num;
+                        System.out.println("num: " + num);
                     }
                 }
                 sum += p;
             }
-            
-           // System.out.println("sum: " + sum);
         }
-
-      
-
-
-
         return sum;
     }
 
@@ -275,8 +251,7 @@ Solution Part one: 556367
 Solution Part two: 0
 fel:71446313
 
-fel:
-435736
+
 
 
 Solution Part two: 
