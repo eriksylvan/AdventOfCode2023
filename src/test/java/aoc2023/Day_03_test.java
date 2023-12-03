@@ -32,13 +32,12 @@ public class Day_03_test {
         assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
     }
 
-    @Disabled
     @Test
     public void testPartTwo_1() {
        
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));
 
-        int expected = 2286;
+        int expected = 467835;
         int actual = day03.day03PartTwo(indata);
         assertEquals(actual, expected, "expected: " + expected + " actual: " + actual);
     }

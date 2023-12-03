@@ -58,7 +58,7 @@ public class Day_03 {
                     else{
                         num = num*10 + Character.getNumericValue(c);
                     }
-                    boolean hasSymbol = hasSumbolNeghbour(schema, i, j);
+                    boolean hasSymbol = hasSymbolNeghbour(schema, i, j);
                     if (hasSymbol){
                         sym = "*";
                     }
@@ -90,12 +90,11 @@ public class Day_03 {
                 sum += numbers.get(i);
             }
         }
- System.out.println("Hej");
 
         return sum;
     }
 
-    public boolean hasSumbolNeghbour(ArrayList<String> schema, int row, int col){
+    public boolean hasSymbolNeghbour(ArrayList<String> schema, int row, int col){
         boolean hasSymbol = false;
         // check if symbol is in any of the 8 neighbours
         for (int i = row-1; i <= row+1; i++) {
@@ -104,8 +103,7 @@ public class Day_03 {
                 if (j < 0 || j >= schema.get(i).length()) continue;
                 if (i == row && j == col) continue;
                 char s = schema.get(i).charAt(j);
-                //if (charInList(s, new char[]{',','*','$','+','@','&','?','!','~','^','<','>','|','\\','/','(',')','[',']','{','}'})) {
-                    if (!charInList(s, new char[]{'0','1','2','3','4','5','6','7','8','9','.'})) {
+                if (!charInList(s, new char[]{'0','1','2','3','4','5','6','7','8','9','.'})) {
                     hasSymbol = true;
                     break;
                 }
@@ -127,12 +125,129 @@ public class Day_03 {
         return found;
     }
 
+    // create a function that takes a schema and a row and col the return the number that is found at that position
+    public int getNumber(ArrayList<String> schema, int row, int col){
+        int colstartpos = 0;
+        int num = -1;
+        //go left until '.'
+        for (int i = col-1; i >= 0; i--) {
+            char c = schema.get(row).charAt(i);
+            if (!Character.isDigit(c)){
+                colstartpos = i+1;
+                break;
+            }
+        }
+        
+        //go right until char is not a digit
+        for (int i = colstartpos; i < schema.get(row).length(); i++) {
+            char c = schema.get(row).charAt(i);
+            if (!Character.isDigit(c)){
+                break;
+            }
+            else{
+                if (num == -1){
+                    num = Character.getNumericValue(c);
+                }
+                else{
+                    num = num*10 + Character.getNumericValue(c);
+                }
+            }
+        } 
+        return num;
+    }
 
+
+    // Part two
 
 
     public int day03PartTwo(ArrayList<String> schema) {
         int sum = 0;
-       
+        //define array of tuples (row, col, neighbourcount)
+        ArrayList<int[]> neghboArrayList = new ArrayList<int[]>(); 
+        ArrayList<int[]> symbolArrayList = new ArrayList<int[]>(); 
+
+
+
+        // loop through schema find car '*'
+        for (int i = 0; i < schema.size(); i++) {
+            String row = schema.get(i);
+            //System.out.println(row);
+            //for each character in row
+            for (int j = 0; j < row.length(); j++) {
+                char c = row.charAt(j);
+                //check if character is a number
+                if (c == '*') {
+                    // Number found
+                    //System.out.println("found *");
+                    // check if symbol is in any of the 8 neighbours
+                    boolean numberFound = false;
+                    int neighbourcount =0;
+                    for (int k = i-1; k <= i+1; k++) {
+                        numberFound = false;
+                        if (k < 0 || k >= schema.size()) continue;
+                        for (int l = j-1; l <= j+1; l++) {
+                            if (l < 0 || l >= schema.get(k).length()) continue;
+                            if (k == i && l == j) {
+                                numberFound = false;
+                                continue;
+                            }
+
+                            char s = schema.get(k).charAt(l);
+                            if (Character.isDigit(s)&&!numberFound){
+                                numberFound = true;
+                                neighbourcount++;
+                                neghboArrayList.add(new int[]{k,l, i,j});
+                                continue;
+                            }
+                            else{
+                                numberFound = false;
+                            }
+                        }
+                    }
+                    //System.out.println("neighbourcount: " + neighbourcount+ " i: " + i + " j: " + j);
+                    symbolArrayList.add(new int[]{i,j,neighbourcount});
+                   
+                }
+            }
+        }
+         // loop through neighboursArrayList and print 
+        // System.out.println("neighborArrayList"); 
+        for (int[] n:neghboArrayList){
+            //System.out.println("row: " + n[0] + " col: " + n[1] + "*row: " + n[2] + " *col: " + n[3]);
+            //System.out.println(getNumber(schema, n[0], n[1]));
+            }    
+        // loop through symbolArrayList and print
+
+        //System.out.println("symbolArrayList");
+        for (int[] s:symbolArrayList){
+            //System.out.println("row: " + s[0] + " col: " + s[1] + " neighbourcount: " + s[2]);
+            }   
+
+
+        // loop through symbolArrayList and print
+
+        // define an ArrayList of integers
+        ArrayList<Integer> findNumber = new ArrayList<>();   
+        for (int[] s:symbolArrayList){
+            int p =1;
+            if (s[2] == 2){
+                // fild all numbers that neighbor that position
+                for (int[] n:neghboArrayList){
+                    if (n[2] == s[0] && n[3] == s[1]){
+                        p*=getNumber(schema, n[0], n[1]);
+                       // System.out.println("p: " + p);
+                    }
+                }
+                sum += p;
+            }
+            
+           // System.out.println("sum: " + sum);
+        }
+
+      
+
+
+
         return sum;
     }
 
@@ -156,7 +271,9 @@ public class Day_03 {
 
 /*
 Advent of code 2023, Day 03
-Solution Part one: 
+Solution Part one: 556367
+Solution Part two: 0
+fel:71446313
 
 fel:
 435736
