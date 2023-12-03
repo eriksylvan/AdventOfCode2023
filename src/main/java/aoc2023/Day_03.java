@@ -183,30 +183,24 @@ public class Day_03 {
                                 numberFound = false;
                                 continue;
                             }
-
                             char s = schema.get(k).charAt(l);
-                            if (Character.isDigit(s)&&!numberFound){
+                            if (Character.isDigit(s) && !numberFound){
                                 numberFound = true;
                                 neighbourcount++;
                                 neghboArrayList.add(new int[]{k,l, i,j});
                                 continue;
                             }
-                            else{
-                                numberFound = false;
+                            if (!Character.isDigit(s)){
+                                numberFound = false;            
                             }
                         }
                     }
-                    System.out.println("neighbourcount: " + neighbourcount+ " i: " + i + " j: " + j);
                     symbolArrayList.add(new int[]{i,j,neighbourcount});
                    
                 }
             }
         }
-        
-        //print all neighbours
-        for (int[] n:neghboArrayList){
-            System.out.println("neighbour: " + n[0] + " " + n[1] + " " + n[2] + " " + n[3]);
-        }
+
 
         // define an ArrayList of integers
         ArrayList<Integer> findNumber = new ArrayList<>();   
@@ -218,7 +212,6 @@ public class Day_03 {
                     if (n[2] == s[0] && n[3] == s[1]){
                         int num= getNumber(schema, n[0], n[1]);
                         p*=num;
-                        System.out.println("num: " + num);
                     }
                 }
                 sum += p;
@@ -247,12 +240,7 @@ public class Day_03 {
 
 /*
 Advent of code 2023, Day 03
+
 Solution Part one: 556367
-Solution Part two: 0
-fel:71446313
-
-
-
-
-Solution Part two: 
+Solution Part two: 89471771
 */

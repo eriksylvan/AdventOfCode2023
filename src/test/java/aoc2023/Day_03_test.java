@@ -39,9 +39,26 @@ public class Day_03_test {
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));
 
         int expected = 467835;
-//        expected = (1*1+1*1+755*598);
         int actual = day03.day03PartTwo(indata);
         assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
     }
+
+
+    @Test
+    public void testPartTwo_2() {
+       
+    
+
+String[] testData2 = {      
+"..922.........=.....",
+"...*................",
+"....419.........468."
+};
+
+    ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData2));
+    int  expected = (922*419);
+        int actual = day03.day03PartTwo(indata);
+        assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
+    }   
 
 }
