@@ -60,7 +60,7 @@ public class Day_04_test {
 
 
 
-    @Disabled
+    
     @Test
     public void testPartTwo_1() { 
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));

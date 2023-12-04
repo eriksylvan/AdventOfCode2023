@@ -77,9 +77,58 @@ public class Day_04 {
     // Part two
 
 
-    public int day04PartTwo(ArrayList<String> schema) {
+    public int day04PartTwo(ArrayList<String> cards) {
         int sum = 0;
-        
+        int points = 0;
+        int[] numberOfWins = new int[cards.size()];
+
+
+
+        //                         "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
+
+        for (String card : cards) {
+            // split card into card number and card numbers
+            String[] cardParts = card.trim().split(":");
+            int cardno = Integer.parseInt(cardParts[0].trim().split("\\s+")[1]);
+            // split card numbers into numbers
+            String[] cardNumbers = cardParts[1].trim().split("\\|");
+            String[] winningNumbers = cardNumbers[0].trim().split("\\s+");
+            String[] yourNumbers = cardNumbers[1].trim().split("\\s+");
+            
+            System.out.println("-->" + cardParts[0]);
+            System.err.println(winningNumbers.length + " " + yourNumbers.length);
+            System.out.print("winningNumbers: " );
+            //loop winningNumbers and print out
+            for (String winningNumber : winningNumbers) {
+                System.out.print(winningNumber + " ");
+            }
+             System.out.println();
+            System.out.print("yourNumbers: ");
+            //loop yourNumbers and print out
+            for (String yourNumber : yourNumbers) {
+                System.out.print(yourNumber + " ");
+            }
+            System.out.println();
+
+            //print cardParts[0] + " " + winningNumbers + " " + yourNumbers;
+            // compare winning numbers with your numbers
+            int wins = 0;
+            for (String winningNumber : winningNumbers) {
+                for (String yourNumber : yourNumbers) {
+                    if (winningNumber.equals(yourNumber)) {
+                        System.out.println("YES winningNumber: " + winningNumber + " yourNumber: " + yourNumber);
+                        wins++;
+                    }
+                }
+            }
+            numberOfWins[cardno-1] = wins;
+        }
+        //print numberOfWins
+        System.out.print("numberOfWins: ");
+        for (int i : numberOfWins) {
+            System.out.print(i + " ");
+        }
+
         return sum;
     }
 
