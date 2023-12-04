@@ -37,28 +37,11 @@ public class Day_04 {
             String[] winningNumbers = cardNumbers[0].trim().split("\\s+");
             String[] yourNumbers = cardNumbers[1].trim().split("\\s+");
             
-            System.out.println("-->" + cardParts[0]);
-            System.err.println(winningNumbers.length + " " + yourNumbers.length);
-            System.out.print("winningNumbers: " );
-            //loop winningNumbers and print out
-            for (String winningNumber : winningNumbers) {
-                System.out.print(winningNumber + " ");
-            }
-             System.out.println();
-            System.out.print("yourNumbers: ");
-            //loop yourNumbers and print out
-            for (String yourNumber : yourNumbers) {
-                System.out.print(yourNumber + " ");
-            }
-            System.out.println();
-
-            //print cardParts[0] + " " + winningNumbers + " " + yourNumbers;
-            // compare winning numbers with your numbers
             int wins = 0;
             for (String winningNumber : winningNumbers) {
                 for (String yourNumber : yourNumbers) {
                     if (winningNumber.equals(yourNumber)) {
-                        System.out.println("YES winningNumber: " + winningNumber + " yourNumber: " + yourNumber);
+                       // System.out.println("YES winningNumber: " + winningNumber + " yourNumber: " + yourNumber);
                         wins++;
                     }
                 }
@@ -79,12 +62,8 @@ public class Day_04 {
 
     public int day04PartTwo(ArrayList<String> cards) {
         int sum = 0;
-        int points = 0;
+        
         int[] numberOfWins = new int[cards.size()];
-
-
-
-        //                         "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
 
         for (String card : cards) {
             // split card into card number and card numbers
@@ -95,20 +74,7 @@ public class Day_04 {
             String[] winningNumbers = cardNumbers[0].trim().split("\\s+");
             String[] yourNumbers = cardNumbers[1].trim().split("\\s+");
             
-            System.out.println("-->" + cardParts[0]);
-            System.err.println(winningNumbers.length + " " + yourNumbers.length);
-            System.out.print("winningNumbers: " );
-            //loop winningNumbers and print out
-            for (String winningNumber : winningNumbers) {
-                System.out.print(winningNumber + " ");
-            }
-             System.out.println();
-            System.out.print("yourNumbers: ");
-            //loop yourNumbers and print out
-            for (String yourNumber : yourNumbers) {
-                System.out.print(yourNumber + " ");
-            }
-            System.out.println();
+            
 
             //print cardParts[0] + " " + winningNumbers + " " + yourNumbers;
             // compare winning numbers with your numbers
@@ -116,19 +82,31 @@ public class Day_04 {
             for (String winningNumber : winningNumbers) {
                 for (String yourNumber : yourNumbers) {
                     if (winningNumber.equals(yourNumber)) {
-                        System.out.println("YES winningNumber: " + winningNumber + " yourNumber: " + yourNumber);
+                        //System.out.println("YES winningNumber: " + winningNumber + " yourNumber: " + yourNumber);
                         wins++;
                     }
                 }
             }
             numberOfWins[cardno-1] = wins;
         }
-        //print numberOfWins
-        System.out.print("numberOfWins: ");
-        for (int i : numberOfWins) {
-            System.out.print(i + " ");
+        
+        int[] cardCount = new int[numberOfWins.length];
+
+        for (int i = 0; i < cardCount.length; i++) {
+            cardCount[i] = 1;
         }
 
+
+        for (int i = 0; i < numberOfWins.length; i++) {
+            for (int j = 1;j <= numberOfWins[i]; j++) {
+                cardCount[i+j] += cardCount[i];
+            }
+        }
+
+        // sum all cardCount
+        for (int i : cardCount) {
+            sum += i;
+        }
         return sum;
     }
 
@@ -154,5 +132,5 @@ public class Day_04 {
 Advent of code 2023, Day 04
 
 Solution Part one: 26426
-Solution Part two: 
+Solution Part two: 6227972
 */

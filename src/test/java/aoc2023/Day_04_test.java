@@ -65,7 +65,7 @@ public class Day_04_test {
     public void testPartTwo_1() { 
         ArrayList<String> indata = new ArrayList<String>(Arrays.asList(testData));
 
-        int expected = 467835;
+        int expected = 30;
         int actual = day04.day04PartTwo(indata);
         assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
     }
