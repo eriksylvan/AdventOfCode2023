@@ -31,14 +31,14 @@ public class Day_05_test {
 
 
 
-    @Disabled
+    
     @Test
     public void testPartTwo_1() { 
         ArrayList<String> indata = day05.getInputData(inputFile);
 
        
-        int expected = 30;
-        int actual = day05.day05PartTwo(indata);
+        long expected = 46;
+        long actual = day05.day05PartTwo(indata);
         assertEquals(expected, actual, "expected: " + expected + " actual: " + actual);
     }
 }
