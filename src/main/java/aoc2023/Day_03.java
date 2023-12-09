@@ -203,7 +203,7 @@ public class Day_03 {
 
 
         // define an ArrayList of integers
-        ArrayList<Integer> findNumber = new ArrayList<>();   
+        //ArrayList<Integer> findNumber = new ArrayList<>();   
         for (int[] s:symbolArrayList){
             int p =1;
             if (s[2] == 2){

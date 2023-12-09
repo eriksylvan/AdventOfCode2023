@@ -3,7 +3,7 @@ package aoc2023;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import org.junit.jupiter.api.Disabled;
+//mport org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

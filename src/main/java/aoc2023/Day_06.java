@@ -1,11 +1,7 @@
         package aoc2023;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.Collections;
-import java.util.stream.LongStream;
-import java.time.Instant;
+
 
 /**
  * Day_06
@@ -76,7 +72,7 @@ public class Day_06 {
     }
 
     public long day06PartTwo(Long time,Long distance ) {
-        long wins = 0;
+       
 
         long min_presstime = 0;
         long max_presstime = time;

@@ -28,7 +28,7 @@ public class Day_05 {
     }
 
     public long day05PartOne(ArrayList<String> almanack) {
-        int sum = 0;
+        
 
         ArrayList<Long> seeds = new ArrayList<>();
 
@@ -165,7 +165,7 @@ public class Day_05 {
          * }
          */
 
-        ArrayList<Long> mappedValues = new ArrayList<>();
+        //ArrayList<Long> mappedValues = new ArrayList<>();
         // for all seeds in range
         for (int a = 0; a < seeds.size(); a += 2) {
             // Creating an LongStream
